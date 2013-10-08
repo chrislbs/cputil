@@ -16,11 +16,12 @@ void read_lines(
 
 	char buffer[1024];
 	std::string line;
-	while(!ifs.eof()) 
+	while(ifs.good()) 
 	{
 		ifs.getline(buffer, sizeof(buffer));
+		if(ifs.eof())
+			break;
 		line = buffer;
-		std::cout<< line << std::endl;
 		while(ifs.fail() && !ifs.bad() && !ifs.eof())
 		{
 			ifs.getline(buffer, sizeof(buffer));
